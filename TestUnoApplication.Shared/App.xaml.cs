@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using TestUnoApplication.Views;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
@@ -15,6 +16,8 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Nancy.TinyIoc;
+using TestUnoApplication.Bootstapper;
 
 namespace TestUnoApplication
 {
@@ -23,6 +26,7 @@ namespace TestUnoApplication
 	/// </summary>
 	public sealed partial class App : Application
 	{
+		private static readonly TinyIoCContainer Container = TinyIoCContainer.Current;
 		/// <summary>
 		/// Initializes the singleton application object.  This is the first line of authored code
 		/// executed, and as such is the logical equivalent of main() or WinMain().
@@ -36,6 +40,7 @@ namespace TestUnoApplication
 #if HAS_UNO || NETFX_CORE
 			this.Suspending += OnSuspending;
 #endif
+			Container.RegisterInstances();
 		}
 
 		/// <summary>
