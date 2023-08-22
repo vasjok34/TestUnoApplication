@@ -27,7 +27,16 @@ namespace TestUnoApplication.Views
 		public MainPage()
 		{
 			this.InitializeComponent();
-			this.DataContext = new ViewModels.MainViewModel(TinyIoCContainer.Current.Resolve<INavigationService>());
+			InitializeWebView();
+			//this.DataContext = new ViewModels.MainViewModel(TinyIoCContainer.Current.Resolve<INavigationService>());		
+		}
+
+		private void InitializeWebView()
+		{
+			MainWV.EnsureCoreWebView2Async();
+			MainWV("<div id='test' style='width: 10px; height: 10px; background-color: blue;'></div>");
+
+			MainWV.Source = new Uri("https://platform.uno/");
 		}
 	}
 }

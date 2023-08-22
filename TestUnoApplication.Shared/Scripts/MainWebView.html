@@ -1,10 +1,51 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <script src="ms-appx:///Scripts/MainScript.ts"></script>
+    <title>
+        Hello
+    </title>
+    <style>
+        /* CSS styles to mimic the appearance */
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            text-align: center;
+            margin: 20px;
+        }
+
+        .text-block {
+            font-size: 30px;
+            margin: 20px;
+        }
+
+        .button {
+            min-height: 140px;
+            min-width: 140px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+    </style>
 </head>
 <body>
-$END$
+<div class="container">
+    <div class="text-block">
+        Second, world!
+    </div>
+    <button class="button"></button>
+    <button class="button" onclick="goToMainPage()">
+        Click Me
+    </button>
+</div>
+
+<script>
+    // JavaScript function to handle button click
+    function goToMainPage() {
+        // Perform the desired action here, e.g., navigation
+        alert("Navigating to the main page");
+    }
+</script>
 </body>
 </html>
