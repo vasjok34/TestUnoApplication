@@ -9,7 +9,7 @@ public class MainViewModel : BaseViewModel
 {
     public ICommand GoToSecondPageCommand { get; set; }
 
-    protected MainViewModel(INavigationService navigationService) : base(navigationService)
+    public MainViewModel(INavigationService navigationService) : base(navigationService)
     {
         GoToSecondPageCommand = new DelegateCommand(GoToSecondPageCommandExecute);
     }

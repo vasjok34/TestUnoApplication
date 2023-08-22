@@ -1,4 +1,5 @@
-﻿using System.Windows.Input;
+﻿using System.Threading.Tasks;
+using System.Windows.Input;
 using TestUnoApplication.Services;
 using Uno.UI.Common;
 
@@ -8,7 +9,7 @@ public class SecondViewModel : BaseViewModel
 {
     public ICommand GoToMainPageCommand { get; set; }
 
-    protected SecondViewModel(INavigationService navigationService) : base(navigationService)
+    public SecondViewModel(INavigationService navigationService) : base(navigationService)
     {
         GoToMainPageCommand = new DelegateCommand(GoToMainPageCommandExecute);
     }
@@ -16,5 +17,15 @@ public class SecondViewModel : BaseViewModel
     private void GoToMainPageCommandExecute()
     {
         NavigationService.NavigateToAsync<MainViewModel>("Navigated to Main");
+    }
+
+    public override async Task Init(object parameter)
+    {
+        await base.Init(parameter);
+
+        if (parameter == null) 
+        { 
+            return; 
+        }
     }
 }

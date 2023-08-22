@@ -6,13 +6,19 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:TestUnoApplication"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModels="clr-namespace:TestUnoApplication.ViewModels"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-
     <Grid>
         <TextBlock
             FontSize="30"
             Margin="20"
-            Text="Hello, world!" />
+            Text="Second, world!" />
         <Button />
+        <Button
+            Command="{Binding GoToMainPageCommand}"
+            HorizontalAlignment="Center"
+            MinHeight="140"
+            MinWidth="140"
+            VerticalAlignment="Center" />
     </Grid>
 </Page>

@@ -69,7 +69,7 @@ namespace TestUnoApplication
 			MainWindow = Windows.UI.Xaml.Window.Current;
 #endif
 
-			var rootFrame = MainWindow.Content as Frame;
+            var rootFrame = MainWindow.Content as Frame;
 
 			// Do not repeat app initialization when the Window already has content,
 			// just ensure that the window is active

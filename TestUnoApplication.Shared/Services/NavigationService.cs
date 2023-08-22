@@ -42,7 +42,7 @@ namespace TestUnoApplication.Services
 
         private Type GetPageTypeForViewModel(Type viewModelType)
         {
-            var pagesNamespace = viewModelType.Namespace?.Replace(ViewModelString, PageString);
+            var pagesNamespace = viewModelType.Namespace?.Replace("ViewModels.", string.Empty);
             var pageClassName = viewModelType.Name.Replace(ViewModelString, PageString);
             var assemblyName = typeof(App).Assembly.FullName;
             var includedFolders = new string[] { "Views" };
@@ -52,13 +52,22 @@ namespace TestUnoApplication.Services
 
         private Page CreatePage(Type viewModelType, object parameter)
         {
-            var pageType = GetPageTypeForViewModel(viewModelType);
-            if (pageType == null)
+            Page page;
+            try
             {
-                throw new Exception($"Cannot locate page type for {viewModelType}");
-            }
+                var pageType = GetPageTypeForViewModel(viewModelType);
+                if (pageType == null)
+                {
+                    throw new Exception($"Cannot locate page type for {viewModelType}");
+                }
 
-            var page = Activator.CreateInstance(pageType) as Page;
+                page = Activator.CreateInstance(pageType) as Page;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
 
             return page;
         }
@@ -116,11 +125,12 @@ namespace TestUnoApplication.Services
                 }
                 else
                 {
-                    fullTypeName = string.Format(CultureInfo.CurrentCulture, "{0}.{1}.{2}, {3}", pageNameSpace, folder,
+                    fullTypeName = string.Format(CultureInfo.CurrentCulture, "TestUnoApplication.{1}.{2}, {3}", pageNameSpace, folder,
                         pageClassName, assemblyName);
                 }
 
                 var type = Type.GetType(fullTypeName);
+                Console.WriteLine(fullTypeName);
 
                 if (type != null)
                 {
@@ -128,7 +138,7 @@ namespace TestUnoApplication.Services
                 }
             }
 
-            var error = string.Format(CultureInfo.CurrentCulture, "Can't find page {0} " + pageClassName);
+            var error = string.Format(CultureInfo.CurrentCulture, "Can't find page " + pageClassName);
             Console.Write(error);
 
             throw new ArgumentException(error);

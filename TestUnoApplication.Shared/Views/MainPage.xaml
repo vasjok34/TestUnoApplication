@@ -11,11 +11,15 @@
     <Grid>
         <TextBlock
             FontSize="30"
+            HorizontalAlignment="Center"
             Margin="20"
-            Text="Hello, world!" />
+            Text="Hello, world!"
+            VerticalAlignment="Top" />
         <Button
             Command="{Binding GoToSecondPageCommand}"
-            HeightRequest=""
-            Text="Hello" />
+            HorizontalAlignment="Center"
+            MinHeight="140"
+            MinWidth="140"
+            VerticalAlignment="Center" />
     </Grid>
 </Page>

@@ -12,5 +12,4 @@
     <Grid>
         <ContentControl x:Name="root" />
     </Grid>
-
 </Window>
