@@ -18,6 +18,7 @@
             Command="{Binding GoToMainPageCommand}"
             HorizontalAlignment="Center"
             MinHeight="140"
+            Content="Click AGAIN"
             MinWidth="140"
             VerticalAlignment="Center" />
     </Grid>

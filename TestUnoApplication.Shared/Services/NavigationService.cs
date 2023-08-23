@@ -37,7 +37,9 @@ namespace TestUnoApplication.Services
 
             BindViewModelToPage(page, viewModel);
 
-            navigationFrame.Navigate(page.GetType());
+            Console.WriteLine(page.DataContext);
+            
+            navigationFrame.Navigate(page.GetType());         
         }
 
         private Type GetPageTypeForViewModel(Type viewModelType)

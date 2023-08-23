@@ -18,6 +18,8 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Nancy.TinyIoc;
 using TestUnoApplication.Bootstapper;
+using TestUnoApplication.Services;
+using TestUnoApplication.ViewModels;
 
 namespace TestUnoApplication
 {
@@ -27,7 +29,9 @@ namespace TestUnoApplication
 	public sealed partial class App : Application
 	{
 		private static readonly TinyIoCContainer Container = TinyIoCContainer.Current;
-		/// <summary>
+
+		private readonly INavigationService navigationService;
+			/// <summary>
 		/// Initializes the singleton application object.  This is the first line of authored code
 		/// executed, and as such is the logical equivalent of main() or WinMain().
 		/// </summary>
@@ -41,6 +45,7 @@ namespace TestUnoApplication
 			this.Suspending += OnSuspending;
 #endif
 			Container.RegisterInstances();
+			navigationService = TinyIoCContainer.Current.Resolve<INavigationService>();
 		}
 
 		/// <summary>
@@ -103,6 +108,8 @@ namespace TestUnoApplication
 				// Ensure the current window is active
 				MainWindow.Activate();
 			}
+
+			navigationService.NavigateToAsync<MainViewModel>();
 		}
 
 		/// <summary>

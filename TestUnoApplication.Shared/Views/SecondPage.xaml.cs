@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Nancy.TinyIoc;
 using TestUnoApplication.Services;
+using TestUnoApplication.ViewModels;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -27,7 +28,7 @@ namespace TestUnoApplication.Views
 		public SecondPage()
 		{
 			this.InitializeComponent();
-			this.DataContext = new ViewModels.SecondViewModel(TinyIoCContainer.Current.Resolve<INavigationService>());
-		}
+            this.DataContext = new SecondViewModel(TinyIoCContainer.Current.Resolve<INavigationService>());
+        }
     }
 }
