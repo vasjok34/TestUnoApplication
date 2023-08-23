@@ -14,8 +14,8 @@ public class MainViewModel : BaseViewModel
         GoToSecondPageCommand = new DelegateCommand(GoToSecondPageCommandExecute);
     }
 
-    private void GoToSecondPageCommandExecute()
+    private async void GoToSecondPageCommandExecute()
     {
-        NavigationService.NavigateToAsync<SecondViewModel>("This is SecondPage");
+        await NavigationService.NavigateToAsync<SecondViewModel>("This is SecondPage");
     }
 }

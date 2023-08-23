@@ -14,9 +14,9 @@ public class SecondViewModel : BaseViewModel
         GoToMainPageCommand = new DelegateCommand(GoToMainPageCommandExecute);
     }
 
-    private void GoToMainPageCommandExecute()
+    private async void GoToMainPageCommandExecute()
     {
-        NavigationService.NavigateToAsync<MainViewModel>("Navigated to Main");
+        await NavigationService.NavigateToAsync<MainViewModel>("Navigated to Main");
     }
 
     public override async Task Init(object parameter)
